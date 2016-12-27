@@ -88,6 +88,7 @@ public class DatabaseHelper {
     }
 
     public boolean bookExists(String title, String author) {
+        System.out.println(" Start here ");
         BasicDBObject bookQuery = new BasicDBObject();
 
         BasicDBObject[] obj1 = new BasicDBObject[2];
@@ -95,9 +96,10 @@ public class DatabaseHelper {
         obj1[1] = (new BasicDBObject("author", Pattern.compile(author, Pattern.CASE_INSENSITIVE)));
         bookQuery.put("$and", obj1);
 
-        DBCursor cursor = dbColectionAuthors.find(bookQuery);
-
+        DBCursor cursor = dbCollectionBooks.find(bookQuery);
+        System.out.println("here");
         if (cursor.hasNext()) {
+            System.out.println(" and in here");
             return true;
         }
         return false;
@@ -113,11 +115,13 @@ public class DatabaseHelper {
 
     public DBCursor getBooksByTitle(String title) {
         BasicDBObject regexQuery = new BasicDBObject();
-        regexQuery.put("author",
+        regexQuery.put("title",
                 new BasicDBObject("$regex", title)
                         .append("$options", "i"));
 
+
         return dbCollectionBooks.find(regexQuery);
+
     }
 
     public void deletBookBytitleAndAuthor(String title, String author){

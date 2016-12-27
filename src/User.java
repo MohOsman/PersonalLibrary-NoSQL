@@ -120,20 +120,11 @@ public class User {
      * Method to remove a Book from the database. The user will be asked to input Title, Author (and edition) of the Book to remove.
      */
     private void deleteBook() {
-        //     Book tempBook = view.getTitleAuthorEdition();   // Creates a temporary Book of input Title, Author (and edition)
-     //   if (db.bookExists(tempBook.getTitle(), tempBook.getAuthor())) { // Checks if the Book exists in the database
-       //     System.out.println("Book exists!");
-//            if (tempBook.getEdition() == -1) {
-//                db.deleteBook(tempBook.getTitle(), tempBook.getAuthor());
-//            } else {
-//                db.deleteSpecificBook(tempBook.getTitle(), tempBook.getAuthor(), tempBook.getEdition());
-//            }
-//        }else{
-//            System.out.println("The book does not exist");
-    //    }
-
-
-        db.deletBookBytitleAndAuthor("are","wer");
+             Book tempBook = view.getTitleAuthorEdition();   // Creates a temporary Book of input Title, Author (and edition)
+        if (db.bookExists(tempBook.getTitle(), tempBook.getAuthor())) { // Checks if the Book exists in the database
+            System.out.println("Book exists!");
+            db.deletBookBytitleAndAuthor(tempBook.getTitle(),tempBook.getAuthor());
+        }
     }
 
     /**
