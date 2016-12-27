@@ -128,6 +128,7 @@ public class User {
             else {
                 db.deleteBookByTitleAndAuthorAndEdition(tempBook.getTitle(), tempBook.getAuthor(), tempBook.getEdition());
             }
+            System.out.println(" - The Book(s) were deleted.");
         }
     }
 

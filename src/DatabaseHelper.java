@@ -100,7 +100,6 @@ public class DatabaseHelper {
     }
 
     public boolean bookExists(String title, String author) {
-        System.out.println(" Start here ");
         BasicDBObject bookQuery = new BasicDBObject();
 
         BasicDBObject[] obj1 = new BasicDBObject[2];
@@ -109,9 +108,7 @@ public class DatabaseHelper {
         bookQuery.put("$and", obj1);
 
         DBCursor cursor = dbCollectionBooks.find(bookQuery);
-        System.out.println("here");
         if (cursor.hasNext()) {
-            System.out.println(" and in here");
             return true;
         }
         return false;
