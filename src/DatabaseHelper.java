@@ -22,8 +22,6 @@ public class DatabaseHelper {
             DB db = mongo.getDB("test");
 
             System.out.println("Connect to database successfully");
-//            boolean auth = db.authenticate(myUserName, myPassword);
-//            System.out.println("Authentication: "+auth);
 
             DBCollection coll = db.getCollection("testCollection");
             System.out.println(coll.count());
