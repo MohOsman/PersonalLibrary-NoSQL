@@ -119,5 +119,21 @@ public class DatabaseHelper {
 
         return dbCollectionBooks.find(regexQuery);
     }
+
+    public void deletBookBytitleAndAuthor(String title, String author){
+        BasicDBObject catQuery = new BasicDBObject();
+
+        BasicDBObject[] obj1 = new BasicDBObject[2];
+        obj1[0] = (new BasicDBObject("title", Pattern.compile(title , Pattern.CASE_INSENSITIVE)));
+        obj1[1] = (new BasicDBObject("author", Pattern.compile(author , Pattern.CASE_INSENSITIVE)));
+        catQuery.put("$and", obj1);
+
+         dbCollectionBooks.remove(catQuery);
+
+
+
+
+    }
+
 }
 
