@@ -4,7 +4,7 @@
  */
 public class User {
     private View view ;
-//    private DatabaseHelper db = new DatabaseHelper();;
+    private DatabaseHelper db = new DatabaseHelper();;
     private Book  book;
     private Author author;
 
@@ -95,6 +95,7 @@ public class User {
 
     private void getAllBooks() {
 //        view.printBooks(db.getAllBooks());
+        System.out.println(db.getAllBooks());
     }
 
     private void getAllBooksWithEditionLargerThanOne() {
@@ -137,7 +138,7 @@ public class User {
 //        if(!db.authorExists(author.getName())) {
 //            view.addYearToAuthor(author);
 //        }
-//        db.addBook(book, author);
+        db.addBook(book, author);
     }
 
 

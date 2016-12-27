@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../bson-3.0.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../bson-3.0.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,16 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../mongodb-driver-3.0.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../mongodb-driver-core-3.0.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../mongo-java-driver-3.0.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

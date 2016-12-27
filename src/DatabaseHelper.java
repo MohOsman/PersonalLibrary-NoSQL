@@ -1,6 +1,7 @@
 
 import com.mongodb.*;
 
+import java.sql.ResultSet;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,8 +39,17 @@ public class DatabaseHelper {
     }
 
 
+    public void addBook(Book book, Author author) {
+        BasicDBObject bookObj = new BasicDBObject("title", book.getTitle())
+                .append("author", book.getAuthor())
+                .append("year", book.getYear())
+                .append("edition", book.getEdition())
+                .append("category", book.getCategory())
+                .append("subcategory",book.getSubCategory());
+        dbCollectionBooks.insert(bookObj);
+    }
 
-
-
-
+    public long getAllBooks() {
+        return dbCollectionBooks.count();
+    }
 }
