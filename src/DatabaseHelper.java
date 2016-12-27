@@ -1,6 +1,8 @@
 
 import com.mongodb.*;
 
+import java.util.regex.Pattern;
+
 
 public class DatabaseHelper {
     private MongoClient client;
@@ -49,16 +51,39 @@ public class DatabaseHelper {
     }
 
     public DBCursor getBooksLargerThanOne() {
-
         BasicDBObject editionQuery = new BasicDBObject();
         editionQuery.put("edition", new BasicDBObject("$gt", 1));
         return dbCollectionBooks.find(editionQuery);
-
     }
 
     public long getHowManyBooksPublishedInYear(int year) {
         BasicDBObject yearQuery = new BasicDBObject();
         yearQuery.put("year", year);
         return dbCollectionBooks.count(yearQuery);
+    }
+
+    public DBCursor getAllBooksByCategory(String category) {
+        BasicDBObject catQuery = new BasicDBObject();
+
+        BasicDBObject[] obj1 = new BasicDBObject[2];
+        obj1[0] = (new BasicDBObject("category", Pattern.compile(category , Pattern.CASE_INSENSITIVE)));
+        obj1[1] = (new BasicDBObject("subcategory", Pattern.compile(category , Pattern.CASE_INSENSITIVE)));
+        catQuery.put("$or", obj1);
+
+        return dbCollectionBooks.find(catQuery);
+
+    }
+
+    public boolean authorExists(String name) {
+
+        BasicDBObject authorQuery = new BasicDBObject();
+        authorQuery.put("name", name);
+
+        DBCursor cursor = dbColectionAuthors.find(authorQuery);
+
+        if(cursor.hasNext()) {
+            return true;
+        }
+        return false;
     }
 }

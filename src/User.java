@@ -90,7 +90,7 @@ public class User {
     private void getAllBooksByCategory() {
         System.out.print("\nSearch category: ");
         String category = view.getString();
-//        view.printBooksShort(db.getAllBooksByCategory(category));
+        view.printBooks(db.getAllBooksByCategory(category));
     }
 
     private void getAllBooks() {
@@ -134,9 +134,9 @@ public class User {
      */
     private void addBook() {
         view.getBookInformation(book,author);
-//        if(!db.authorExists(author.getName())) {
-//            view.addYearToAuthor(author);
-//        }
+        if(!db.authorExists(author.getName())) {
+            view.addYearToAuthor(author);
+        }
         db.addBook(book, author);
     }
 
