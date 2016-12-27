@@ -47,7 +47,7 @@ public class DatabaseHelper {
     }
 
     public DBCursor getAllAuthors() {
-      return dbColectionAuthors.find();
+        return dbColectionAuthors.find();
     }
 
     public DBCursor getBooksLargerThanOne() {
@@ -66,8 +66,8 @@ public class DatabaseHelper {
         BasicDBObject catQuery = new BasicDBObject();
 
         BasicDBObject[] obj1 = new BasicDBObject[2];
-        obj1[0] = (new BasicDBObject("category", Pattern.compile(category , Pattern.CASE_INSENSITIVE)));
-        obj1[1] = (new BasicDBObject("subcategory", Pattern.compile(category , Pattern.CASE_INSENSITIVE)));
+        obj1[0] = (new BasicDBObject("category", Pattern.compile(category, Pattern.CASE_INSENSITIVE)));
+        obj1[1] = (new BasicDBObject("subcategory", Pattern.compile(category, Pattern.CASE_INSENSITIVE)));
         catQuery.put("$or", obj1);
 
         return dbCollectionBooks.find(catQuery);
@@ -81,7 +81,7 @@ public class DatabaseHelper {
 
         DBCursor cursor = dbColectionAuthors.find(authorQuery);
 
-        if(cursor.hasNext()) {
+        if (cursor.hasNext()) {
             return true;
         }
         return false;
@@ -91,15 +91,33 @@ public class DatabaseHelper {
         BasicDBObject bookQuery = new BasicDBObject();
 
         BasicDBObject[] obj1 = new BasicDBObject[2];
-        obj1[0] = (new BasicDBObject("title", Pattern.compile(title , Pattern.CASE_INSENSITIVE)));
-        obj1[1] = (new BasicDBObject("author", Pattern.compile(author , Pattern.CASE_INSENSITIVE)));
+        obj1[0] = (new BasicDBObject("title", Pattern.compile(title, Pattern.CASE_INSENSITIVE)));
+        obj1[1] = (new BasicDBObject("author", Pattern.compile(author, Pattern.CASE_INSENSITIVE)));
         bookQuery.put("$and", obj1);
 
         DBCursor cursor = dbColectionAuthors.find(bookQuery);
 
-        if(cursor.hasNext()) {
+        if (cursor.hasNext()) {
             return true;
         }
         return false;
     }
+
+    public DBCursor getbooksbyAuthor(String author) {
+        BasicDBObject regexQuery = new BasicDBObject();
+        regexQuery.put("author",
+                new BasicDBObject("$regex", author).append("$options", "i"));
+
+        return dbCollectionBooks.find(regexQuery);
+    }
+
+    public DBCursor getBooksByTitle(String title) {
+        BasicDBObject regexQuery = new BasicDBObject();
+        regexQuery.put("author",
+                new BasicDBObject("$regex", title)
+                        .append("$options", "i"));
+
+        return dbCollectionBooks.find(regexQuery);
+    }
 }
+

@@ -84,7 +84,7 @@ public class User {
     }
 
     private void getAllAuthors() {
-        db.getAllAuthors();
+      view.printAuthors(db.getAllAuthors());
     }
 
     private void getAllBooksByCategory() {
@@ -104,13 +104,13 @@ public class User {
     private void getBooksByAuthor() {
         System.out.print("\nSearch: ");
         String author = view.getString();
-//        view.printBooks(db.getBooksByAuthor(author));
+       view.printBooks(db.getbooksbyAuthor(author));
     }
 
     private void getBooksByTitle() {
         System.out.print("\nSearch: ");
         String title = view.getString();
-//        view.printBooks(db.getBooksByTitle(title));
+         view.printBooks(db.getBooksByTitle(title));
     }
 
     /**

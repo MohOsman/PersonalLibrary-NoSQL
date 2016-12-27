@@ -118,6 +118,20 @@ public class View {
     }
 
 
+
+    public void printAuthors(DBCursor cursor) {
+        DBObject dbObject ;
+        while (cursor.hasNext()) {
+            dbObject = cursor.next();
+            System.out.println("name: "+ dbObject.get("name")+ " year born: "+ dbObject.get("year"));
+        }
+        System.out.println();
+
+
+    }
+
+
+
     public void print(long num) {
         System.out.println(num);
     }
