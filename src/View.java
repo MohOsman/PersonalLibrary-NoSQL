@@ -154,16 +154,16 @@ public class View {
      * Prints out a ResultSet of Author(s). Prints Name and Year born.
      * @param rs ResultSet containing Author(s) to print out.
      */
-    public void printAuthors(ResultSet rs) {
-        try {
-            while(rs.next()) {
-                System.out.println(rs.getString(1) + ", born " + rs.getString(2));
-            }
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void printAuthors(D) {
+//        try {
+//            while(rs.next()) {
+//                System.out.println(rs.getString(1) + ", born " + rs.getString(2));
+//            }
+//            System.out.println();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * Prints out the first column String of given ResultSet

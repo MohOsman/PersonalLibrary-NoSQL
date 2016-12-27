@@ -84,7 +84,7 @@ public class User {
     }
 
     private void getAllAuthors() {
-//        view.printAuthors(db.getAllAuthors());
+        db.getAllAuthors();
     }
 
     private void getAllBooksByCategory() {
@@ -99,7 +99,7 @@ public class User {
     }
 
     private void getAllBooksWithEditionLargerThanOne() {
-//        view.printBooks(db.getAllBooksWithEditionLargerThanOne());
+    db.getbookslargerthanone();
     }
 
     private void getBooksByAuthor() {
