@@ -94,12 +94,11 @@ public class User {
     }
 
     private void getAllBooks() {
-//        view.printBooks(db.getAllBooks());
-        System.out.println(db.getAllBooks());
+        view.printBooks(db.getAllBooks());
     }
 
     private void getAllBooksWithEditionLargerThanOne() {
-    db.getbookslargerthanone();
+        view.printBooks(db.getbookslargerthanone());
     }
 
     private void getBooksByAuthor() {

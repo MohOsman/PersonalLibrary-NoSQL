@@ -1,3 +1,5 @@
+import com.mongodb.DBCursor;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -112,43 +114,34 @@ public class View {
 
     /**
      * Method to print out Books with all their attributes of a given ResultSet. Prints out Title, Author, Edition, Year and Category (/subcategory).
-     * @param rs ResultSet containing Books to print out.
+     * @param cursor ResultSet containing Books to print out.
      */
-    public void printBooks(ResultSet rs) {
-        try {
-            while(rs.next()) {
-                if(rs.getString(6).contains("null")) {
-                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tEdition: " + rs.getString(3) + "\tYear: " + rs.getString(4) + "\tCategory: " + rs.getString(5));
-                }
-                else {
-                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tEdition: " + rs.getString(3) + "\tYear: " + rs.getString(4) + "\tCategory: " + rs.getString(5) + "/" + rs.getString(6));
-                }
+    public void printBooks(DBCursor cursor) {
+            while(cursor.hasNext()) {
+                System.out.println(cursor.next());
             }
             System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
      * Method to print out Book(s) with all their attributes of a given ResultSet. Prints out Title, Author and Category (/subcategory).
      * @param rs ResultSet containing Book(s) to print out.
      */
-    public void printBooksShort(ResultSet rs) {
-        try {
-            while(rs.next()) {
-                if(rs.getString(4).contains("null")) {
-                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tCategory: " + rs.getString(3));
-                }
-                else {
-                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tCategory: " + rs.getString(3) + "/" + rs.getString(4));
-                }
-            }
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void printBooksShort(ResultSet rs) {
+//        try {
+//            while(rs.next()) {
+//                if(rs.getString(4).contains("null")) {
+//                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tCategory: " + rs.getString(3));
+//                }
+//                else {
+//                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tCategory: " + rs.getString(3) + "/" + rs.getString(4));
+//                }
+//            }
+//            System.out.println();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * Prints out a ResultSet of Author(s). Prints Name and Year born.

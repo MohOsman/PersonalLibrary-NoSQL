@@ -44,8 +44,8 @@ public class DatabaseHelper {
         dbColectionAuthors.insert(authorobj);
     }
 
-    public long getAllBooks() {
-        return dbCollectionBooks.count();
+    public DBCursor getAllBooks() {
+        return dbCollectionBooks.find();
     }
 
     public DBCursor getAllAuthors() {
