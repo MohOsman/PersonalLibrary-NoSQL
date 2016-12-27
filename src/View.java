@@ -1,4 +1,6 @@
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,7 +70,6 @@ public class View {
 
         System.out.print("Edition: ");
         book.setEdition(Integer.valueOf(scanner.nextLine()));
-
     }
 
     /**
@@ -79,21 +80,6 @@ public class View {
         scanner = new Scanner(System.in);
         System.out.print("This is a new author, please enter year the author was born: ");
         author.setYear(scanner.nextInt());
-    }
-
-    /**
-     * Method that creates a temporary Book of inputs by the user. This only gets Title of Book and Name of Author.
-     * @return Book temporary book created by input data.
-     */
-    public Book getTitleAndAuthor() {
-
-        Book tempBook = new Book();
-        scanner = new Scanner(System.in);
-        System.out.print("Title of the Book: ");
-        tempBook.setTitle(scanner.nextLine());
-        System.out.print("Name of the Author: ");
-        tempBook.setAuthor(scanner.nextLine());
-        return tempBook;
     }
 
     /**
@@ -117,46 +103,19 @@ public class View {
      * @param cursor ResultSet containing Books to print out.
      */
     public void printBooks(DBCursor cursor) {
+        DBObject obj;
             while(cursor.hasNext()) {
-                System.out.println(cursor.next());
+                obj = cursor.next();
+                System.out.println(obj.get("title") + ", by " +
+                        obj.get("author") + ", year " +
+                        obj.get("year") + " edition: " +
+                        obj.get("edition") + ", " +
+                        obj.get("category") + "/" +
+                        obj.get("subcategory") + "."
+                );
             }
             System.out.println();
     }
-
-    /**
-     * Method to print out Book(s) with all their attributes of a given ResultSet. Prints out Title, Author and Category (/subcategory).
-     * @param rs ResultSet containing Book(s) to print out.
-     */
-//    public void printBooksShort(ResultSet rs) {
-//        try {
-//            while(rs.next()) {
-//                if(rs.getString(4).contains("null")) {
-//                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tCategory: " + rs.getString(3));
-//                }
-//                else {
-//                    System.out.println("Title: " + rs.getString(1) + "\tAuthor: " + rs.getString(2) + "\tCategory: " + rs.getString(3) + "/" + rs.getString(4));
-//                }
-//            }
-//            System.out.println();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    /**
-     * Prints out a ResultSet of Author(s). Prints Name and Year born.
-     * @param rs ResultSet containing Author(s) to print out.
-     */
-//    public void printAuthors(D) {
-//        try {
-//            while(rs.next()) {
-//                System.out.println(rs.getString(1) + ", born " + rs.getString(2));
-//            }
-//            System.out.println();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 
     public void print(long num) {
