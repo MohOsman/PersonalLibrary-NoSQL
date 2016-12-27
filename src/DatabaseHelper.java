@@ -1,10 +1,6 @@
 
 import com.mongodb.*;
 
-import java.sql.ResultSet;
-import java.util.Arrays;
-import java.util.List;
-
 
 public class DatabaseHelper {
     private MongoClient client;
@@ -52,11 +48,17 @@ public class DatabaseHelper {
       return dbColectionAuthors.find();
     }
 
-    public DBCursor getbookslargerthanone() {
+    public DBCursor getBooksLargerThanOne() {
 
-        BasicDBObject gtQuery = new BasicDBObject();
-        gtQuery.put("edition", new BasicDBObject("$gt", 1));
-        return dbCollectionBooks.find(gtQuery);
+        BasicDBObject editionQuery = new BasicDBObject();
+        editionQuery.put("edition", new BasicDBObject("$gt", 1));
+        return dbCollectionBooks.find(editionQuery);
 
+    }
+
+    public long getHowManyBooksPublishedInYear(int year) {
+        BasicDBObject yearQuery = new BasicDBObject();
+        yearQuery.put("year", year);
+        return dbCollectionBooks.count(yearQuery);
     }
 }

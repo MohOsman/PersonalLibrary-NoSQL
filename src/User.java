@@ -80,7 +80,7 @@ public class User {
     private void getHowManyBooksPublishedInYear() {
         System.out.print("Enter year: ");
         int year = view.getInt();
-//        view.print(db.getHowManyBooksPublishedInYear(year));
+        view.print(db.getHowManyBooksPublishedInYear(year));
     }
 
     private void getAllAuthors() {
@@ -98,7 +98,7 @@ public class User {
     }
 
     private void getAllBooksWithEditionLargerThanOne() {
-        view.printBooks(db.getbookslargerthanone());
+        view.printBooks(db.getBooksLargerThanOne());
     }
 
     private void getBooksByAuthor() {

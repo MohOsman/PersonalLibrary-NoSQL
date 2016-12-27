@@ -158,19 +158,9 @@ public class View {
 //        }
 //    }
 
-    /**
-     * Prints out the first column String of given ResultSet
-     * @param rs ResultSet to print from
-     */
-    public void print(ResultSet rs) {
-        try {
-            while(rs.next()) {
-                System.out.println(rs.getString(1));
-            }
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+    public void print(long num) {
+        System.out.println(num);
     }
 
     public int getInt() {
