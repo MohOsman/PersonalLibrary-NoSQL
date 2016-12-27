@@ -118,7 +118,8 @@ public class User {
      */
     private void deleteBook() {
         Book tempBook = view.getTitleAuthorEdition();   // Creates a temporary Book of input Title, Author (and edition)
-//        if (db.bookExists(tempBook.getTitle(), tempBook.getAuthor())) { // Checks if the Book exists in the database
+        if (db.bookExists(tempBook.getTitle(), tempBook.getAuthor())) { // Checks if the Book exists in the database
+            System.out.println("Book exists!");
 //            if (tempBook.getEdition() == -1) {
 //                db.deleteBook(tempBook.getTitle(), tempBook.getAuthor());
 //            } else {
@@ -126,7 +127,7 @@ public class User {
 //            }
 //        }else{
 //            System.out.println("The book does not exist");
-//        }
+        }
     }
 
     /**

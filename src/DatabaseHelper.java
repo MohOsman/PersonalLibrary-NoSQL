@@ -86,4 +86,20 @@ public class DatabaseHelper {
         }
         return false;
     }
+
+    public boolean bookExists(String title, String author) {
+        BasicDBObject bookQuery = new BasicDBObject();
+
+        BasicDBObject[] obj1 = new BasicDBObject[2];
+        obj1[0] = (new BasicDBObject("title", Pattern.compile(title , Pattern.CASE_INSENSITIVE)));
+        obj1[1] = (new BasicDBObject("author", Pattern.compile(author , Pattern.CASE_INSENSITIVE)));
+        bookQuery.put("$and", obj1);
+
+        DBCursor cursor = dbColectionAuthors.find(bookQuery);
+
+        if(cursor.hasNext()) {
+            return true;
+        }
+        return false;
+    }
 }
